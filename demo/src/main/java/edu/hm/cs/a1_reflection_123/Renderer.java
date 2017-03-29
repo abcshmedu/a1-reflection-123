@@ -1,6 +1,7 @@
 package edu.hm.cs.a1_reflection_123;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * Created by MatHe on 29.03.2017.
@@ -13,34 +14,45 @@ public class Renderer {
         this.obj = obj;
     }
 
-    public String render(){
-
+    public String render() {
+        String res= "";
 
         Class<?> cut = obj.getClass();
 
-        Field[] fields = cut.getFields();
+        Field[] fields = cut.getDeclaredFields();
+        res += "Instance of "+ cut.getName()+ ":\n";
 
         for (Field field: fields){
             if (field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
-                field.toString();
-                /*
-                tests++;
-				Object ott = cut.getConstructor().newInstance();
-				try {
-					method.invoke(ott);
-					successes++;
-				} catch(InvocationTargetException e){
-					fails++;
-				}
-                 */
+
+                try {
+                    field.setAccessible(true);
+                    Object abw = field.get(obj);
+                    res += field.getName()+" ";
+                    if (field.getType().isPrimitive()){
+                        res +=  "(Type "+field.getType() + "): ";
+                    }
+                    else{
+                        res +=  "(Type "+field.getType().toString().substring(6) + "): ";
+                    }
+                    res += field.get(obj).toString();
+                    res += "\n";
+
+
+
+                } catch(IllegalAccessException e) {
+
+                }
+
             }
 
 
 
         }
+        System.out.printf(res);
 
 
-        return "";
+        return res;
     }
 
 }

@@ -1,5 +1,6 @@
 package edu.hm.cs.a1_reflection_123;
 
+import edu.hm.SomeClass;
 import org.junit.Before;
 import org.junit.Test;
 

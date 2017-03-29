@@ -15,7 +15,7 @@ public class Tester {
 		Method[] methods = cut.getMethods();
 		
 		for (Method method : methods) {
-			if (method.getAnnotation(org.junit.Test.class) != null) {
+			/*if (method.getAnnotation(org.junit.Test.class) != null) {
 				tests++;
 				Object ott = cut.getConstructor().newInstance();
 				try {
@@ -24,7 +24,7 @@ public class Tester {
 				} catch(InvocationTargetException e){
 					fails++;
 				}
-			}
+			}*/
 		}
 		
 		System.out.println("total: " + tests + " Successes: " + successes + " fails: " + fails);
