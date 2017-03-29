@@ -18,14 +18,11 @@ public class Renderer {
 
         Class<?> cut = obj.getClass();
 
-
         Field[] fields = cut.getFields();
 
         for (Field field: fields){
             if (field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
-                field.
-
-
+                field.toString();
                 /*
                 tests++;
 				Object ott = cut.getConstructor().newInstance();
