@@ -16,7 +16,7 @@ public class Renderer {
 
         Class<?> cut = obj.getClass();
 
-        var = cut
+
         return "";
     }
 
