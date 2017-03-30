@@ -11,7 +11,6 @@ public class Tester {
 		int fails = 0;
 		
 		Class<?> cut = Class.forName(args[0]);
-		
 		Method[] methods = cut.getMethods();
 		
 		for (Method method : methods) {
