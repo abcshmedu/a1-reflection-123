@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * Created by MatHe on 29.03.2017.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.FIELD})
+@Target({ElementType.FIELD,ElementType.METHOD})
 public @interface RenderMe {
      /**
       *

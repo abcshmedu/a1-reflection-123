@@ -16,4 +16,10 @@ public class SomeClass {
         this.foo = foo;
     }
 
+    /*@RenderMe
+    public int doSTM(){
+        System.out.println("42");
+        return 42;
+    }*/
+
 }

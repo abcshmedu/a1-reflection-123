@@ -1,15 +1,22 @@
 package edu.hm.renderer;
 
-import edu.hm.cs.a1_reflection_123.IRenderer;
 
 /**
  * Created by MatHe on 05.04.2017.
  */
 public class ArrayRenderer {
+    /**
+     * renders array.
+     * @param array array to render.
+     * @return rendered array.
+     */
     public String render(int[] array) {
-        String result = "";
+        String result = "array (Type int[]) [";
 
-
+        for (int i = 0; i < array.length;i++){
+            result += array[i]+", ";
+        }
+        result+= "]\n";
         return result;
     }
 }

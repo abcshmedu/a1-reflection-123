@@ -3,6 +3,8 @@ package edu.hm.cs.a1_reflection_123;
 import edu.hm.renderer.ArrayRenderer;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 import static java.lang.Class.*;
 
@@ -28,6 +30,7 @@ public class Renderer implements IRenderer {
      */
     public String render() {
         ArrayRenderer renderArray = new ArrayRenderer();
+
         String res = "";
 
         Class< ? > cut = obj.getClass();
@@ -58,30 +61,44 @@ public class Renderer implements IRenderer {
                         //endregion
                     }
                     else{
-                        //region array
+                        //region int array
                         Object intArray= new Object();
                         field.setAccessible(true);
                         try {
                              intArray = field.get(obj);
                         } catch (IllegalAccessException e) {
-                            e.printStackTrace();
+                            throw new RuntimeException(e);
                         }
-
                         res+= renderArray.render((int[])intArray);
 
                         //endregion
-
                 }
-
-
             }
-
-
-
         }
-        System.out.printf(res);
+        Method[] methods = cut.getDeclaredMethods();
 
 
+        for (Method method: methods) {
+            if (method.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
+                try {
+                    if (method.getReturnType() != void.class) {
+                        method.setAccessible(true);
+                        res += "Method: ";
+                        res += method.getName();
+                        res += " returns: ";
+                        res += method.getReturnType();
+                        res += "\n";
+                        method.invoke(obj);
+                    } else {
+                        throw new IllegalAccessException();
+                    }
+                } catch (IllegalAccessException e) {
+                    throw new RuntimeException(e);
+                } catch (InvocationTargetException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        }
         return res;
     }
 
