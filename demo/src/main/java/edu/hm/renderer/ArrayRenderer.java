@@ -13,10 +13,10 @@ public class ArrayRenderer {
     public String render(int[] array) {
         String result = "array (Type int[]) [";
 
-        for (int i = 0; i < array.length;i++){
-            result += array[i]+", ";
+        for (int i = 0; i < array.length; i++) {
+            result += array[i] + ", ";
         }
-        result+= "]\n";
+        result += "]\n";
         return result;
     }
 }
