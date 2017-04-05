@@ -16,4 +16,6 @@ public class ClassUnderTestTest {
 		assertEquals(5, new ClassUnderTest().calculateValue());
 	}
 
+
+
 }

@@ -32,7 +32,6 @@ public class Renderer implements IRenderer {
 
         for (Field field: fields) {
             if (field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
-
                 try {
                     field.setAccessible(true);
                     Object abw = field.get(obj);
@@ -45,9 +44,6 @@ public class Renderer implements IRenderer {
                     }
                     res += field.get(obj).toString();
                     res += "\n";
-
-
-
                 } catch(IllegalAccessException e) {
 
                 }
