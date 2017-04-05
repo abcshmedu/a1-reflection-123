@@ -41,7 +41,7 @@ public class Renderer implements IRenderer {
         for (Field field: fields) {
             if (field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
                 RenderMe annotation = field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class);
-                    if (annotation.with().equals("edu.hm.cs.a1_reflection_123.Renderer")){
+                    if (annotation.with().equals("edu.hm.cs.a1_reflection_123.Renderer")) {
                         //region normal
                         try {
                             field.setAccessible(true);
@@ -60,16 +60,16 @@ public class Renderer implements IRenderer {
                         }
                         //endregion
                     }
-                    else{
+                    else {
                         //region int array
-                        Object intArray= new Object();
+                        Object intArray = new Object();
                         field.setAccessible(true);
                         try {
                              intArray = field.get(obj);
                         } catch (IllegalAccessException e) {
                             throw new RuntimeException(e);
                         }
-                        res+= renderArray.render((int[])intArray);
+                        res += renderArray.render((int[])intArray);
 
                         //endregion
                 }
