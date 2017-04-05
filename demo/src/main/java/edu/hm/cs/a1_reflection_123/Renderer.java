@@ -32,6 +32,11 @@ public class Renderer implements IRenderer {
 
         for (Field field: fields) {
             if (field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class) != null) {
+                RenderMe a = field.getAnnotation(edu.hm.cs.a1_reflection_123.RenderMe.class);
+                if (a.with().equals("edu.hm.cs.a1_reflection_123.Renderer")){
+                    System.out.println("wked");
+                }
+
                 try {
                     field.setAccessible(true);
                     Object abw = field.get(obj);
